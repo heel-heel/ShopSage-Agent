@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ShopSage · 咖啡选购顾问</title>
+  <link rel="stylesheet" href="/static/app.css">
+</head>
+<body class="consumer-body">
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="ShopSage 首页"><span class="brand-mark">S</span><span>ShopSage</span></a>
+    <nav><a href="#how">怎么推荐</a><a href="/admin">商家入口</a></nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="kicker">为每一次冲煮找到合适的开始</p>
+        <h1>不只推荐咖啡，<br>也说清楚为什么。</h1>
+        <p class="intro">告诉我你的预算、器具和口味。我会用商品资料与冲煮知识做出有证据的选择建议。</p>
+        <div class="trust-line"><span>◇</span> 推荐基于演示商品目录，不含医疗或健康结论</div>
+      </div>
+      <aside class="flavor-card" aria-label="本次风味档案">
+        <p>你的风味档案</p>
+        <div class="flavor-orbit"><span>花香</span><span>果酸</span><b>今天想喝什么？</b><span>可可</span><span>坚果</span></div>
+        <small>偏好会在本次匿名会话中被记住。</small>
+      </aside>
+    </section>
+
+    <section class="decision-studio" aria-labelledby="studio-title">
+      <div class="studio-heading"><p class="kicker">选购实验室</p><h2 id="studio-title">把需求讲给我听</h2></div>
+      <form id="decision-form">
+        <label for="question">你想买什么，或想怎么喝？</label>
+        <textarea id="question" required minlength="2" placeholder="例如：我是手冲新手，预算 300 元，喜欢巧克力和坚果味，想从一套器具开始。">我是手冲新手，预算 300 元，喜欢巧克力和坚果味，想从一套器具开始。</textarea>
+        <div class="control-row">
+          <label>预算（元）<input id="budget" type="number" min="1" max="10000" placeholder="300"></label>
+          <label>常用冲煮<select id="brew-method"><option value="">让我判断</option><option value="hand_drip">手冲</option><option value="espresso">意式</option><option value="moka_pot">摩卡壶</option></select></label>
+          <label>经验<select id="experience"><option value="">让我判断</option><option value="beginner">刚入门</option><option value="intermediate">有一定经验</option><option value="expert">熟练</option></select></label>
+        </div>
+        <button class="primary-button" type="submit"><span>生成可信推荐</span><span aria-hidden="true">↗</span></button>
+      </form>
+    </section>
+
+    <section id="result" class="result-section" aria-live="polite" hidden>
+      <div class="result-heading"><div><p class="kicker">选购结果</p><h2>你的推荐清单</h2></div><span id="trace-badge" class="trace-badge"></span></div>
+      <p id="answer" class="answer"></p>
+      <div id="constraints" class="chips"></div>
+      <div id="recommendations" class="recommendation-grid"></div>
+      <div class="evidence-panel"><h3>依据与取舍</h3><div id="evidence"></div></div>
+    </section>
+
+    <section id="how" class="how-section">
+      <p class="kicker">不是黑箱推荐</p>
+      <div class="how-grid"><article><span>01</span><h3>理解限制</h3><p>预算、冲煮方式和经验先作为硬条件参与筛选。</p></article><article><span>02</span><h3>查询证据</h3><p>商品参数与咖啡知识会被检索，并附回可查看的依据。</p></article><article><span>03</span><h3>说明取舍</h3><p>结果会说明适合的理由，也会提醒你需要承担的取舍。</p></article></div>
+    </section>
+  </main>
+  <footer>ShopSage 演示项目 · 商品与行为数据均为公开资料筛选及模拟数据</footer>
+  <script src="/static/consumer.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+.env
+.chroma/
+shopsage.db
+__pycache__/
+*.py[cod]
+.pytest_cache/
+data/

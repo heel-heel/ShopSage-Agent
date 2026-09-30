@@ -1,0 +1,36 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: shopsage
+      POSTGRES_USER: shopsage
+      POSTGRES_PASSWORD: shopsage_dev
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  chroma:
+    image: chromadb/chroma:0.5.23
+    ports:
+      - "8001:8000"
+    volumes:
+      - chroma_data:/chroma/chroma
+  app:
+    build: .
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgresql+psycopg://shopsage:shopsage_dev@postgres:5432/shopsage
+      CHROMA_PATH: /app/data/chroma
+      CHROMA_HOST: chroma
+      JWT_SECRET: local-docker-secret-change-me
+      ADMIN_EMAIL: merchant@shopsage.demo
+      ADMIN_PASSWORD: demo-admin-password
+    ports:
+      - "8000:8000"
+    volumes:
+      - app_data:/app/data
+volumes:
+  postgres_data:
+  chroma_data:
+  app_data:

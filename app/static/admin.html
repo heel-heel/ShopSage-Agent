@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ShopSage · 商家工作台</title>
+  <link rel="stylesheet" href="/static/app.css">
+</head>
+<body class="admin-body">
+  <div id="admin-login" class="login-shell">
+    <form id="login-form" class="login-card"><a class="brand" href="/"><span class="brand-mark">S</span><span>ShopSage</span></a><h1>商家工作台</h1><p>查看匿名洞察与可回放的 Agent 轨迹。</p><label>邮箱<input id="email" type="email" value="merchant@shopsage.demo" required></label><label>密码<input id="password" type="password" value="demo-admin-password" required></label><button class="primary-button" type="submit">进入工作台</button><small id="login-error"></small></form>
+  </div>
+  <div id="admin-app" class="admin-layout" hidden>
+    <aside class="admin-sidebar"><a class="brand" href="/"><span class="brand-mark">S</span><span>ShopSage</span></a><p>咖啡消费决策</p><nav><button class="nav-item active" data-panel="overview">经营洞察</button><button class="nav-item" data-panel="runs">Agent 轨迹</button><button class="nav-item" data-panel="knowledge">知识库更新</button></nav><a class="back-link" href="/">← 返回消费者端</a></aside>
+    <main class="admin-main">
+      <header><div><p class="kicker">merchant_admin</p><h1>今天的消费信号</h1></div><span class="status-dot">演示数据</span></header>
+      <section id="overview" class="panel active"><div id="overview-content" class="metrics"></div><div class="admin-grid"><article class="admin-card"><h2>匿名人群</h2><div id="segments"></div></article><article class="admin-card strategy"><h2>建议下一步</h2><div id="strategy"></div></article></div></section>
+      <section id="runs" class="panel"><div class="panel-title"><div><p class="kicker">可回放</p><h2>Agent 决策轨迹</h2></div><button id="refresh-runs" class="quiet-button">刷新</button></div><div class="runs-layout"><div id="run-list" class="run-list"></div><pre id="run-detail" class="trace-view">选择一条运行记录查看检索、筛选、排序与证据校验过程。</pre></div></section>
+      <section id="knowledge" class="panel"><div class="panel-title"><div><p class="kicker">受控增量</p><h2>更新知识库</h2></div></div><article class="upload-card"><h3>上传 UTF-8 文本、Markdown 或 CSV</h3><p>系统按文件哈希去重；消费者对话不会直接进入公共知识库。</p><form id="upload-form"><input type="file" id="knowledge-file" accept=".txt,.md,.csv,text/plain,text/markdown,text/csv" required><button class="primary-button" type="submit">索引文件</button></form><p id="upload-status"></p></article></section>
+    </main>
+  </div>
+  <script src="/static/admin.js"></script>
+</body>
+</html>
